@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Tặng Cậu yêu</title>
+    <style>
+        body {
+            background: url('https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/441927230_492625679864506_915848075801202306_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFhuxPS_H9KGGBeLBEPKdAFDqhAprbk5O4OqECmtuTk7pKHbNAvd5EdK9hzCve9QZHESIdytbTiDlwIvyoEiPXW&_nc_ohc=QDT8CQBfXikQ7kNvgHczCCG&_nc_ht=scontent.fsgn2-3.fna&oh=03_Q7cD1QFmF3qmOzoC_olAJJiAvjtiu2IX-LwQm5XaQP4WVxAKfQ&oe=668028C3');
+          
+            color: rgb(253, 38, 85);
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Lucida Handwriting'
+        }
+
+        #no {
+            transition: all 0.2s;
+            z-index: 10;
+            position: relative;
+            margin-top: 20px;
+
+        }
+
+        .btn-container {
+           
+            padding:3%;
+            width:99px;
+        }
+
+        button {
+            background-color: rgb(253, 53, 86);
+            padding: 10px 20px;
+            margin: 0px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: rgb(255, 255, 255);
+            font-family: 'Lucida Handwriting'
+            
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        #popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        img {
+            width: 50%; 
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <br>
+    <br>
+    <br>
+        <img id="myImg" src="https://i.giphy.com/AITCIirtebHDnlayNj.webp" style="width:35%"> 
+
+<main>
+     <h1><i>Làm người yêu mình nha?</i></h1> 
+
+     <div id="yes" class="btn-container">
+        <button type="button" id="yes-btn">đồng ý</button>
+    </div>
+</main>
+<br>
+
+     <div id="no" class="btn-container">
+        <button type="button" id="no-btn">không</button>
+     </div>
+
+    <div id="popup">
+        <div id="popup-content">
+            <img src="https://i.giphy.com/VgNk3XyaEibn5ggYQs.webp" style="width:40%">
+            
+            <h2 ><br><i>Mình củng yêu cậu!</i><br></h2>
+            <p style="color:rgb(0, 0, 0)">Chúc con tiểu hồ ly của mình luôn ngoan ngoãn, xinh đẹp và thành công. Đặc biệt, nếu buồn thì thì hảy chia sẻ với mình nha. Yêu câu!</p>
+        </div>
+    </div>
+
+    <script>      
+        const yes = document.getElementById('yes')       
+        const no = document.getElementById('no')
+        const myImg = document.getElementById('myImg')
+        const popup = document.getElementById('popup')
+
+        let timer;
+        let originalSrc = myImg.src;
+        
+        no.addEventListener('mouseover', ()=>{
+            clearTimeout(timer);
+            const x = Math.floor(Math.random()*(window.innerWidth - 150 ))
+            const y = Math.floor(Math.random()*(window.innerHeight - 150 ))
+
+            no.style.position = 'absolute';
+            no.style.left = `${x}px`
+            no.style.top = `${y}px`
+
+            timer = setTimeout(function() {
+                myImg.src = 'https://i.giphy.com/bhpBJiz45YjYeGRsRB.gif';
+                myImg.style.width = '35%';
+                setTimeout(function() {
+                    myImg.src = originalSrc;
+                }, 700);
+            }, 1);
+        });
+        no.addEventListener('click', ()=>{
+            clearTimeout(timer);
+            const x = Math.floor(Math.random()*(window.innerWidth - 150 ))
+            const y = Math.floor(Math.random()*(window.innerHeight - 150 ))
+
+            no.style.position = 'absolute';
+            no.style.left = `${x}px`
+            no.style.top = `${y}px`
+
+            timer = setTimeout(function() {
+                myImg.src = 'https://i.giphy.com/bhpBJiz45YjYeGRsRB.gif';
+                myImg.style.width = '35%';
+                setTimeout(function() {
+                    myImg.src = originalSrc;
+                }, 700);
+            }, 1);
+        });
+
+        yes.addEventListener('click', ()=>{
+            popup.style.display = "block";
+            no.style.display = 'none'; 
+        });
+
+        window.onclick = function(event) {
+            if (event.target == popup) {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+    
+
+</center>
+</body>
+</html>
+
+
+
